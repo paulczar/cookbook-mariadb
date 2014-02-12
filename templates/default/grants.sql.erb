@@ -41,3 +41,8 @@ SET PASSWORD FOR 'root'@'localhost' = PASSWORD('<%= node['mariadb']['server_root
 <% if node['mariadb']['root_network_acl'] -%>
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'<%= node['mariadb']['root_network_acl'] %>' IDENTIFIED BY '<%= node['mariadb']['server_root_password'] %>'
 <% end -%>
+
+<% if node['wsrep']['user'] -%>
+# wsrep user
+SET wsrep_on=OFF; GRANT ALL ON *.* TO '<%= node['wsrep']['user'] %>'@'%' IDENTIFIED BY '<%= node['wsrep']['password'] %>';
+<% end -%>

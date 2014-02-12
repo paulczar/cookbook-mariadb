@@ -87,9 +87,9 @@ directory node['mariadb']['data_dir'] do
   recursive true
 end
 
-template '/etc/init/mysql.conf' do
-  source 'init-mysql.conf.erb'
-end
+#template '/etc/init/mysql.conf' do
+#  source 'init-mysql.conf.erb'
+#end
 
 template '/etc/apparmor.d/usr.sbin.mysqld' do
   source 'usr.sbin.mysqld.erb'
@@ -129,6 +129,7 @@ end
 
 service 'mysql' do
   service_name 'mysql'
-  supports     :status => true, :restart => true, :reload => true
+  supports     :status => true, :restart => true, :reload => true, :start => true, :stop => true
   action       [:enable, :start]
+  not_if { File.exist?("node['mariadb']['server']['pid_file']") }
 end

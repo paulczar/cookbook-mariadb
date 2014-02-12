@@ -1,84 +1,80 @@
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
+Vagrant.require_plugin "vagrant-berkshelf"
+Vagrant.require_plugin "vagrant-chef-zero"
+Vagrant.require_plugin "vagrant-omnibus"
 
 Vagrant.configure("2") do |config|
-  # All Vagrant configuration is done here. The most common configuration
-  # options are documented and commented below. For a complete reference,
-  # please see the online documentation at vagrantup.com.
-
-  config.vm.hostname = "MariaDB-berkshelf"
-
-  # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "centos65"
-
-  # The url from where the 'config.vm.box' box will be fetched if it
-  # doesn't already exist on the user's system.
-  config.vm.box_url = "http://developer.nrel.gov/downloads/vagrant-boxes/CentOS-6.5-x86_64-v20140110.box"
-
-  # Assign this VM to a host-only network IP, allowing you to access it
-  # via the IP. Host-only networks can talk to the host machine as well as
-  # any other machines on the same network, but cannot be accessed (through this
-  # network interface) by any external networks.
-  #config.vm.network :private_network, ip: "33.33.33.10"
-
-  # Create a public network, which generally matched to bridged network.
-  # Bridged networks make the machine appear as another physical device on
-  # your network.
-
-  # config.vm.network :public_network
-
-  # Create a forwarded port mapping which allows access to a specific port
-  # within the machine from a port on the host machine. In the example below,
-  # accessing "localhost:8080" will access port 80 on the guest machine.
-
-  # Share an additional folder to the guest VM. The first argument is
-  # the path on the host to the actual folder. The second argument is
-  # the path on the guest to mount the folder. And the optional third
-  # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
-
-  # Provider-specific configuration so you can fine-tune various
-  # backing providers for Vagrant. These expose provider-specific options.
-  # Example for VirtualBox:
-  #
-  # config.vm.provider :virtualbox do |vb|
-  #   # Don't boot with headless mode
-  #   vb.gui = true
-  #
-  #   # Use VBoxManage to customize the VM. For example to change memory:
-  #   vb.customize ["modifyvm", :id, "--memory", "1024"]
-  # end
-  #
-  # View the documentation for the provider you're using for more
-  # information on available options.
-
-  # The path to the Berksfile to use with Vagrant Berkshelf
-  # config.berkshelf.berksfile_path = "./Berksfile"
-
-  # Enabling the Berkshelf plugin. To enable this globally, add this configuration
-  # option to your ~/.vagrant.d/Vagrantfile file
+  # Berkshelf plugin configuration
   config.berkshelf.enabled = true
 
-  # An array of symbols representing groups of cookbook described in the Vagrantfile
-  # to exclusively install and copy to Vagrant's shelf.
-  # config.berkshelf.only = []
+  # Chef-Zero plugin configuration
+  config.chef_zero.enabled = true
+  config.chef_zero.chef_repo_path = "."
 
-  # An array of symbols representing groups of cookbook described in the Vagrantfile
-  # to skip installing and copying to Vagrant's shelf.
-  # config.berkshelf.except = []
+  # Omnibus plugin configuration
+  config.omnibus.chef_version = '11.8.0'
 
-  config.vm.provision :chef_solo do |chef|
-    chef.log_level = :debug
-    chef.json = {
-      :mariadb => {
-        :server_root_password => 'ilovestrongpasswords',
-        :server_debian_password => 'ilovestrongpasswords',
-        :server_repl_password => 'ilovestrongpasswords'
-      }
-    }
+  chef_json = {
+        mariadb: {
+          server_root_password: 'ilovestrongpasswords',
+          server_debian_password: 'ilovestrongpasswords',
+          server_repl_password: 'ilovestrongpasswords',
+          server: {
+            galera: {
+              interface: 'eth1'
+            }
+          }
+        },
+        wsrep: {
+          password: 'ilovestrongpasswords',
+          sst_receive_interface: 'eth1'
+        }
+  }
 
-    chef.run_list = [
-      "recipe[mariadb::client]"
-    ]
+  config.vm.box = "opscode-ubuntu-12.04"
+  config.vm.box_url = "https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box"
+
+  # Regular Node
+  config.vm.define :galera3 do |galera3|
+    galera3.vm.hostname = "galera3"
+    galera3.vm.network "private_network", ip: "33.33.33.63"
+    galera3.vm.provision :chef_client do |chef|
+      #chef.log_level = :debug
+      chef.json = chef_json
+      chef.run_list = %w{ role[galera] }
+    end
   end
+
+  # Regular Node
+  config.vm.define :galera2 do |galera2|
+    galera2.vm.hostname = "galera2"
+    galera2.vm.network "private_network", ip: "33.33.33.62"
+    galera2.vm.provision :chef_client do |chef|
+      #chef.log_level = :debug
+      chef.json = chef_json
+      chef.run_list = %w{ role[galera] }
+    end
+  end
+
+  # Reference Node
+  config.vm.define :galera1 do |galera1|
+    galera1.vm.hostname = "galera1"
+    galera1.vm.network "private_network", ip: "33.33.33.61"
+    galera1.vm.provision :chef_client do |chef|
+      #chef.log_level = :debug
+      chef.json = chef_json
+      chef.run_list = %w{ role[galera-reference] }
+    end
+  end
+
+#  # regular node
+#  config.vm.define :galera4 do |galera4|
+#    galera4.vm.hostname = "galera4"
+#    galera4.vm.network "private_network", ip: "33.33.33.64"
+#    galera4.vm.provision :chef_client do |chef|
+#      #chef.log_level = :debug
+#      chef.json = chef_json
+#      chef.run_list = %w{ role[galera] }
+#    end
+#  end
+
 end

@@ -5,7 +5,9 @@ mariadb Cookbook
 Installs and configures MariaDB client or server.
 
 A word of caution: I have not tested it on anything beside CentOS 6.4 with chef
-solo. I would be happy to accept patches for other platforms!
+solo. I would be happy to accept patches for other platforms! 
+
+mariadb+galera has been tested with ubuntu 12.04.  Docs on Galera support way down below.
 
 Requirements
 ------------
@@ -192,6 +194,39 @@ These node attributes are stored on the Chef server when using `chef-client`. Be
     }
 ```
 
+Galera
+------
+
+Support for Galera replication was built by merging in portions of the [att-cloud mysql cookbook](https://github.com/att-cloud/cookbook-mysql), modifying to suit the MariaDB packages, and a bunch of cleanup.
+
+Support for MariaDB with Galera is tested against Ubuntu 12.04.
+
+You need at least three nodes in your environment,  one should have the role 'galera_reference' the other rest should be 'galera'.
+
+### Example using Vagrant
+
+see `Vagrantfile`.
+
+requires vagrant plugins:
+* vagrant-berkshelf
+* vagrant-omnibus
+* vagrant-chef-zero
+
+```
+$ vagrant up
+```
+
+Vagrant will deploy and provision three nodes.  The first two `galera3, galera2` will install mariadb and galera, but not configure replication.  The final node to provision `galera1` is the reference node.   It will detect that you now have three viable galera nodes and will initialize the galera cluster and will loop until a timeout period.  During this you should re-converge the other two nodes.
+
+```
+$ vagrant provision galera2 galera3
+```
+
+They will detect that there is 3 nodes and will configure their replication and then all three nodes will attempt to sync until a timeout is reached.
+
+I'm not 100% confident of the error detection when the timeouts are hit and need to do more testing.
+
+If you're running real nodes rather than vagrant and you define them before bootstrapping you shouldn't need to do the second round of coverging, but the reference node does need to be running the initialization for the other nodes to start mysql.
 
 
 License & Authors

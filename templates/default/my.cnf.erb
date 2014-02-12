@@ -166,8 +166,10 @@ server-id               = <%= node['mariadb']['tunable']['server_id'] %>
 <% end %>
 <%- if node['mariadb']['tunable']['log_bin'] %>
 log_bin                 = <%= node['mariadb']['tunable']['log_bin'] %>
-binlog_format           = <%= node['mariadb']['tunable']['binlog_format'] %>
 log_slave_updates       = <%= node['mariadb']['tunable']['log_slave_updates'] %>
+<%- end %>
+<%- if node['mariadb']['tunable']['binlog_format'] %>
+binlog_format           = <%= node['mariadb']['tunable']['binlog_format'] %>
 <%- end %>
 <%- if node['mariadb']['tunable']['log_bin_trust_function_creators'] %>
 log_bin_trust_function_creators
@@ -226,6 +228,9 @@ slave_compressed_protocol = <%= node['mariadb']['tunable']['slave_compressed_pro
 # Read the manual for more InnoDB related options. There are many!
 # You might want to disable InnoDB to shrink the mysqld process by circa 100MB.
 #skip-innodb
+<%- if node['mariadb']['tunable']['default_storage_engine'] %>
+default_storage_engine = <%= node['mariadb']['tunable']['default_storage_engine'] %>
+<%- end %>
 
 <%- if node['mariadb']['version'].to_f >= 5.5 %>
 innodb_write_io_threads         = <%= node['mariadb']['tunable']['innodb_write_io_threads'] %>
@@ -255,6 +260,13 @@ innodb_support_xa               = <%= node['mariadb']['tunable']['innodb_support
 <%- if node['mariadb']['tunable']['skip-innodb-doublewrite'] %>
 skip-innodb-doublewrite
 <%- end %>
+<%- if node['mariadb']['tunable']['innodb_autoinc_lock_mode'] %>
+innodb_autoinc_lock_mode        = <%= node['mariadb']['tunable']['innodb_autoinc_lock_mode'] %>
+<%- end %>
+<%- if node['mariadb']['tunable']['innodb_locks_unsafe_for_binlog'] %>
+innodb_locks_unsafe_for_binlog        = <%= node['mariadb']['tunable']['innodb_locks_unsafe_for_binlog'] %>
+<%- end %>
+
 
 innodb_buffer_pool_size = <%= node['mariadb']['tunable']['innodb_buffer_pool_size'] %>
 innodb_log_file_size    = <%= node['mariadb']['tunable']['innodb_log_file_size'] %>
