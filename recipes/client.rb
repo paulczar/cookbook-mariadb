@@ -19,7 +19,7 @@
 
 # Include Opscode helper in Recipe class to get access
 # to debian_before_squeeze? and ubuntu_before_lucid?
-::Chef::Recipe.send(:include, Opscode::Mysql::Helpers)
+#::Chef::Recipe.send(:include, Opscode::Mysql::Helpers)
 
 include_recipe 'mariadb::mariadb_repo'
 
