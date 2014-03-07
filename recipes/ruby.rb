@@ -25,15 +25,15 @@ node.set['build_essential']['compiletime'] = true
 include_recipe 'mariadb::client'
 include_recipe 'build-essential::default'
 
-node['mariadb']['client']['packages'].each do |name|
-  resources("package[#{name}]").run_action(:install)
-end
-
 case node['platform_family']
 when 'debian'
   resources('apt_repository[mariadb]').run_action(:add)
 when 'rhel', 'fedora'
   resources('yum_repository[mariadb]').run_action(:create)
+end
+
+node['mariadb']['client']['packages'].each do |name|
+  resources("package[#{name}]").run_action(:install)
 end
 
 chef_gem 'mysql'
