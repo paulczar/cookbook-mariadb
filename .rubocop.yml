@@ -12,3 +12,32 @@ LineLength:
   Enabled: false
 MethodLength:
   Max: 30
+
+# Offence count: 3
+BlockNesting:
+  Max: 4
+
+# Offence count: 4
+Documentation:
+  Enabled: false
+
+# Offence count: 2
+IfUnlessModifier:
+  Enabled: false
+
+# Offence count: 4
+IndentationConsistency:
+  Enabled: false
+
+# Offence count: 1
+BlockNesting:
+  Max: 5
+
+# Offense count: 3
+# Configuration parameters: EnforcedStyle, SupportedStyles.
+ClassAndModuleChildren:
+  Enabled: false
+
+# Offense count: 1
+FileName:
+  Enabled: false

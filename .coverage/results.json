@@ -1,0 +1,274 @@
+{
+  "total": 38,
+  "touched": 0,
+  "untouched": 38,
+  "coverage": 0.0,
+  "detailed": {
+    "execute[apt-get-update]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/apt/recipes/default.rb",
+        "line": 29
+      },
+      "touched": false
+    },
+    "execute[apt-get update]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/apt/recipes/default.rb",
+        "line": 37
+      },
+      "touched": false
+    },
+    "execute[apt-get autoremove]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/apt/recipes/default.rb",
+        "line": 45
+      },
+      "touched": false
+    },
+    "execute[apt-get autoclean]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/apt/recipes/default.rb",
+        "line": 52
+      },
+      "touched": false
+    },
+    "package[update-notifier-common]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/apt/recipes/default.rb",
+        "line": 59
+      },
+      "touched": false
+    },
+    "execute[apt-get-update-periodic]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/apt/recipes/default.rb",
+        "line": 64
+      },
+      "touched": false
+    },
+    "directory[/var/cache/local]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/apt/recipes/default.rb",
+        "line": 75
+      },
+      "touched": false
+    },
+    "directory[/var/cache/local/preseeding]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/apt/recipes/default.rb",
+        "line": 75
+      },
+      "touched": false
+    },
+    "apt_repository[mariadb]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/mariadb_repo.rb",
+        "line": 31
+      },
+      "touched": false
+    },
+    "package[mysql-libs]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/client.rb",
+        "line": 27
+      },
+      "touched": false
+    },
+    "package[mariadb-client]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/client.rb",
+        "line": 55
+      },
+      "touched": false
+    },
+    "package[libmariadbclient-dev]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/client.rb",
+        "line": 55
+      },
+      "touched": false
+    },
+    "template[/var/lib/mysql/replication_master_script]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/server.rb",
+        "line": 62
+      },
+      "touched": false
+    },
+    "template[/var/lib/mysql/replication_slave_script]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/server.rb",
+        "line": 70
+      },
+      "touched": false
+    },
+    "template[/var/cache/local/preseeding/mysql-server.seed]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/_server_debian.rb",
+        "line": 11
+      },
+      "touched": false
+    },
+    "execute[preseed mysql-server]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/_server_debian.rb",
+        "line": 19
+      },
+      "touched": false
+    },
+    "package[mariadb-galera-server]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/_server_debian.rb",
+        "line": 28
+      },
+      "touched": false
+    },
+    "package[galera]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/_server_debian.rb",
+        "line": 28
+      },
+      "touched": false
+    },
+    "package[apparmor-utils]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/_server_debian.rb",
+        "line": 34
+      },
+      "touched": false
+    },
+    "package[libssl0.9.8]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/_server_debian.rb",
+        "line": 34
+      },
+      "touched": false
+    },
+    "package[psmisc]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/_server_debian.rb",
+        "line": 34
+      },
+      "touched": false
+    },
+    "package[libaio1]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/_server_debian.rb",
+        "line": 34
+      },
+      "touched": false
+    },
+    "package[wget]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/_server_debian.rb",
+        "line": 34
+      },
+      "touched": false
+    },
+    "package[rsync]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/_server_debian.rb",
+        "line": 34
+      },
+      "touched": false
+    },
+    "package[netcat]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/_server_debian.rb",
+        "line": 34
+      },
+      "touched": false
+    },
+    "directory[/var/run/mysqld]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/_server_debian.rb",
+        "line": 40
+      },
+      "touched": false
+    },
+    "directory[/var/lib/mysql]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/_server_debian.rb",
+        "line": 40
+      },
+      "touched": false
+    },
+    "directory[/var/log/mysql]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/_server_debian.rb",
+        "line": 40
+      },
+      "touched": false
+    },
+    "directory[/etc/mysql/conf.d]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/_server_debian.rb",
+        "line": 40
+      },
+      "touched": false
+    },
+    "template[/etc/mysql_grants.sql]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/_server_debian.rb",
+        "line": 52
+      },
+      "touched": false
+    },
+    "execute[install-grants]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/_server_debian.rb",
+        "line": 61
+      },
+      "touched": false
+    },
+    "template[/etc/mysql/debian.cnf]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/_server_debian.rb",
+        "line": 66
+      },
+      "touched": false
+    },
+    "template[/etc/init/mysql.conf]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/_server_debian.rb",
+        "line": 90
+      },
+      "touched": false
+    },
+    "template[/etc/apparmor.d/usr.sbin.mysqld]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/_server_debian.rb",
+        "line": 94
+      },
+      "touched": false
+    },
+    "service[apparmor-mysql]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/_server_debian.rb",
+        "line": 100
+      },
+      "touched": false
+    },
+    "template[/etc/mysql/my.cnf]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/_server_debian.rb",
+        "line": 106
+      },
+      "touched": false
+    },
+    "template[/etc/mysql/conf.d/mariadb.cnf]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/_server_debian.rb",
+        "line": 114
+      },
+      "touched": false
+    },
+    "bash[move mysql data to datadir]": {
+      "source": {
+        "file": "/var/folders/jg/1d5fncg540723dzrcbjbcj7h5w5mnt/T/d20140313-13116-1ge6esc/cookbooks/mariadb/recipes/_server_debian.rb",
+        "line": 124
+      },
+      "touched": false
+    }
+  }
+}

@@ -4,9 +4,6 @@ driver_config:
   require_chef_omnibus: true
 
 platforms:
-- name: centos-5.9
-- name: centos-6.5
-- name: ubuntu-10.04
 - name: ubuntu-12.04
 
 suites:

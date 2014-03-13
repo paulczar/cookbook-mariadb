@@ -2,7 +2,7 @@ case node['platform_family']
 
 when 'freebsd'
   default['mariadb']['data_dir']                = '/var/db/mysql'
-  default['mariadb']['server']['packages']      = %w[mysql55-server]
+  default['mariadb']['server']['packages']      = %w(mysql55-server)
   default['mariadb']['server']['service_name']  = 'mariadb-server'
   default['mariadb']['server']['basedir']       = '/usr/local'
   default['mariadb']['server']['root_group']              = 'wheel'

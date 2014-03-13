@@ -1,6 +1,6 @@
 def query(sql)
   cmd_prefix = test_client_host ? "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@#{test_client_host}" : ''
-  result = %x{echo "#{sql}" | #{cmd_prefix} mysql --host=#{test_server_host} --user=#{test_user} --password=#{test_password} --skip-column-names #{test_database}}
+  result = %x(echo "#{sql}" | #{cmd_prefix} mysql --host=#{test_server_host} --user=#{test_user} --password=#{test_password} --skip-column-names #{test_database})
   assert $?.success? # rubocop:disable SpecialGlobalVars
   result
 end

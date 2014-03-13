@@ -2,7 +2,7 @@ case node['platform_family']
 when 'suse'
   default['mariadb']['data_dir']                = '/var/lib/mysql'
   default['mariadb']['server']['service_name']            = 'mariadb'
-  default['mariadb']['server']['server']['packages']      = %w[mysql-community-server]
+  default['mariadb']['server']['server']['packages']      = %w(mysql-community-server)
   default['mariadb']['server']['basedir']                 = '/usr'
   default['mariadb']['server']['root_group']              = 'root'
   default['mariadb']['server']['mysqladmin_bin']          = '/usr/bin/mysqladmin'

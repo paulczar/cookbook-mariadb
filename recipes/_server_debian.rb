@@ -131,7 +131,7 @@ bash 'move mysql data to datadir' do
   action :nothing
   only_if "[ '/var/lib/mysql' != #{node['mariadb']['data_dir']} ]"
   only_if "[ `stat -c %h #{node['mariadb']['data_dir']}` -eq 2 ]"
-  not_if '[ `stat -c %h /var/lib/mysql/` -eq 2 ]'
+  not_if '[ `stat -c %h /var/lib/mysql` -eq 2 ]'
 end
 
 service 'mysql' do

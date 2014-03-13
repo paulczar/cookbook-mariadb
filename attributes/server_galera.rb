@@ -21,18 +21,18 @@ default['mariadb']['server']['galera']['interface'] = 'eth0'
 
 case node['platform']
 when 'centos', 'redhat', 'fedora', 'suse', 'scientific', 'amazon'
-  default['wsrep']['provider'] = "/usr/lib64/galera/libgalera_smm.so"
+  default['wsrep']['provider'] = '/usr/lib64/galera/libgalera_smm.so'
 else
-  default['wsrep']['provider'] = "/usr/lib/galera/libgalera_smm.so"
+  default['wsrep']['provider'] = '/usr/lib/galera/libgalera_smm.so'
 end
 
 # Define galera pid's
-default["galera"]["mysqld_pid"] = "/var/run/cluster_init.pid"
-default["galera"]["rsync_pid"] = "/var/lib/mysql//rsync_sst.pid"
+default['galera']['mysqld_pid'] = '/var/run/cluster_init.pid'
+default['galera']['rsync_pid'] = '/var/lib/mysql//rsync_sst.pid'
 
 # Define timeouts
-default["galera"]["global_timer"] = 300
-default["galera"]["local_timer"] = 60
+default['galera']['global_timer'] = 300
+default['galera']['local_timer'] = 60
 
 # The name of the Chef role for servers involved in a Galera cluster
 # When writing the wsrep_urls, the recipe searches for nodes that
@@ -52,16 +52,16 @@ default['wsrep']['debug'] = false
 # Note that this user's password is set via secure_password in the
 # server_galera recipe, like other passwords are set in the MySQL
 # cookbooks.
-default['wsrep']['user'] = "wsrep_sst"
+default['wsrep']['user'] = 'wsrep_sst'
 
 # Port that SST communication will go over.
 default['wsrep']['port'] = 4567
 
 # Options specific to the WSREP provider.
-default['wsrep']['provider_options'] = ""
+default['wsrep']['provider_options'] = ''
 
 # Logical cluster name. Should be the same for all nodes in the cluster.
-default['wsrep']['cluster_name'] = "my_galera_cluster"
+default['wsrep']['cluster_name'] = 'my_galera_cluster'
 
 # How many threads will process writesets from other nodes
 # (more than one untested)
@@ -72,10 +72,10 @@ default['wsrep']['slave_threads'] = 1
 default['wsrep']['certify_non_pk'] = 1
 
 # Maximum number of rows in write set
-default['wsrep']['max_ws_rows'] = 131072
+default['wsrep']['max_ws_rows'] = 131_072
 
 # Maximum size of write set
-default['wsrep']['max_ws_size'] = 1073741824
+default['wsrep']['max_ws_size'] = 1_073_741_824
 
 # how many times to retry deadlocked autocommits
 default['wsrep']['retry_autocommit'] = 1
@@ -88,7 +88,7 @@ default['wsrep']['casual_reads'] = 0
 
 # State Snapshot Transfer method. Note that if you set this
 # to mysqldump, you will need to set wsrep_user above to root.
-default['wsrep']['sst_method'] = "rsync"
+default['wsrep']['sst_method'] = 'rsync'
 
 # Interface on this node to receive SST communication.
 default['wsrep']['sst_receive_interface'] = 'eth0'
